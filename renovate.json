@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices", ":disableDependencyDashboard"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "description": "https://docs.renovatebot.com/configuration-options/#lockfilemaintenance"
+  },
+  "nix": {
+    "enabled": true,
+    "description": "https://docs.renovatebot.com/modules/manager/nix/#enabling"
+  },
+  "pre-commit": {
+    "enabled": true,
+    "description": "https://docs.renovatebot.com/modules/manager/pre-commit/#enabling"
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "description": "Ignore GitHub Actions dependencies as they are handled by Dependabot.",
+      "enabled": false
+    },
+    {
+      "matchManagers": ["npm"],
+      "description": "Ignore npm dependencies as they are handled by Dependabot.",
+      "enabled": false
+    }
+  ]
+}
