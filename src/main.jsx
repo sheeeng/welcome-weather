@@ -1,6 +1,6 @@
 import { getWindBarbSegments } from "./season.js";
 import { mountSeasonalScene } from "./scene.jsx";
-import { fetchOsloWeather } from "./weather.js";
+import { fetchWeather, requestGeolocation } from "./weather.js";
 
 const variants = {
   spring: "sakura-sunset",
@@ -74,6 +74,9 @@ function renderWeather(weather) {
     document.getElementById("seasonal-scene"),
     variants[weather.seasonId],
   );
+  const locationLabel = weather.isCurrentLocation ? "your location" : "Oslo";
+  document.querySelector(".intro").textContent =
+    `Display weather conditions at ${locationLabel}.`;
   const summary = document.getElementById("oslo-weather");
   summary.className = "weather-summary";
   summary.setAttribute("aria-label", weather.weatherText);
@@ -122,22 +125,24 @@ function renderWeather(weather) {
     ),
   );
   document.getElementById("oslo-forecast").hidden = false;
-  document
-    .getElementById("oslo-weather-attribution")
-    .replaceChildren(
-      `Forecast for ${weather.timeText}. Obtained from `,
-      Object.assign(document.createElement("a"), {
-        href: "https://api.met.no/",
-        textContent: "MET Norway",
-      }),
-      ".",
-    );
+  const weatherAttribution = document.getElementById("oslo-weather-attribution");
+  const weatherLink = weatherAttribution.querySelector("a");
+  const weatherTime = document.createElement("time");
+  weatherTime.dateTime = weather.time;
+  weatherTime.textContent = weather.timeText;
+  const forecastLine = document.createElement("span");
+  forecastLine.className = "weather-forecast-time";
+  forecastLine.replaceChildren("Forecast for ", weatherTime, ".");
+  const sourceLine = document.createElement("span");
+  sourceLine.replaceChildren("Obtained from ", weatherLink, ".");
+  weatherAttribution.replaceChildren(forecastLine, sourceLine);
 }
 
-fetchOsloWeather()
+requestGeolocation()
+  .then((coords) => fetchWeather(coords ?? undefined))
   .then(renderWeather)
   .catch((error) => {
     document.getElementById("oslo-weather").textContent =
-      "Current weather for Oslo is unavailable.";
-    console.warn(`Could not refresh the Oslo forecast: ${error.message}`);
+      "Current weather is unavailable.";
+    console.warn(`Could not refresh the forecast: ${error.message}`);
   });
