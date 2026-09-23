@@ -1,7 +1,6 @@
 {
   "projects": {
-    "default": "whether-weather",
-    "whether-weather": "whether-weather-26f21"
+    "default": "whether-weather-26f21"
   },
   "targets": {},
   "etags": {}
