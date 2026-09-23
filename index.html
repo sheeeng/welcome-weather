@@ -52,15 +52,12 @@
         margin: 0 0 0.25rem;
         font-size: clamp(2rem, 6vw, 4rem);
       }
-      .intro,
-      #oslo-weather-attribution {
+      .intro {
         color: var(--muted);
       }
       #oslo-weather-attribution {
         display: grid;
         gap: 0.15rem;
-        margin: 1.5rem 0 0.75rem;
-        font-size: 0.875rem;
       }
       .weather-forecast-time {
         white-space: nowrap;
@@ -182,9 +179,6 @@
     <main>
       <h1>Whether Weather</h1>
       <p class="intro">Display weather conditions at Oslo.</p>
-      <p id="oslo-weather-attribution">
-        <a href="https://api.met.no/">MET Norway</a>
-      </p>
       <p id="oslo-weather" aria-live="polite">Loading current weather.</p>
       <dl id="oslo-weather-details"></dl>
       <section id="oslo-forecast" hidden>
@@ -193,6 +187,9 @@
       </section>
     </main>
     <footer>
+      <p id="oslo-weather-attribution">
+        <a href="https://api.met.no/">MET Norway</a>
+      </p>
       <p>
         Seasonal background by
         <a href="https://threeui.com/browse" target="_blank" rel="noopener noreferrer">Three UI</a>.
