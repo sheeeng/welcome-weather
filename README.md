@@ -1,6 +1,6 @@
-# Whether Weather
+# Welcome Weather
 
-An Oslo current-weather and short-forecast browser application with a seasonal Three.js background.
+Welcome Weather is a client-side application that displays current weather and a short forecast for your location or Oslo, Norway, with a seasonal Three.js background.
 
 ## Commands
 
@@ -8,11 +8,11 @@ Run `npm install` to install dependencies. Run `npm run dev` to start the local 
 
 ## Deployments
 
-- [whether-weather-26f21.firebaseapp.com](https://whether-weather-26f21.firebaseapp.com/)
-- [whether-weather-26f21.web.app](https://whether-weather-26f21.web.app/)
-- [whether-weather-three.netlify.app](https://whether-weather-three.netlify.app/)
-- [whether-weather.vercel.app](https://whether-weather.vercel.app/)
-- [sheeeng.github.io/whether-weather](https://sheeeng.github.io/whether-weather/)
+- [welcome-weather.firebaseapp.com](https://welcome-weather.firebaseapp.com/)
+- [welcome-weather.web.app](https://welcome-weather.web.app/)
+- [welcome-weather.netlify.app](https://welcome-weather.netlify.app/)
+- [welcome-weather.vercel.app](https://welcome-weather.vercel.app/)
+- [sheeeng.github.io/welcome-weather](https://sheeeng.github.io/welcome-weather/)
 
 ## Attribution
 

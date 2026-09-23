@@ -151,7 +151,7 @@ function renderWeather(weather) {
 const commitSha = import.meta.env.VITE_GIT_COMMIT_SHA_8_CHAR;
 if (commitSha) {
   const commitLink = document.getElementById("commit-link");
-  commitLink.href = `https://github.com/sheeeng/whether-weather/commit/${commitSha}`;
+  commitLink.href = `https://github.com/sheeeng/welcome-weather/commit/${commitSha}`;
   commitLink.textContent = commitSha;
 }
 
