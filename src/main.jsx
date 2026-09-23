@@ -74,9 +74,16 @@ function renderWeather(weather) {
     document.getElementById("seasonal-scene"),
     variants[weather.seasonId],
   );
-  const locationLabel = weather.isCurrentLocation ? "your location" : "Oslo";
-  document.querySelector(".intro").textContent =
-    `Display weather conditions at ${locationLabel}.`;
+  if (weather.isCurrentLocation) {
+    document.querySelector(".intro").textContent =
+      "Display weather conditions at your location.";
+  } else if (weather.locationDenied) {
+    document.querySelector(".intro").textContent =
+      "Display weather conditions at Oslo. Location access was denied.";
+  } else {
+    document.querySelector(".intro").textContent =
+      "Display weather conditions at Oslo.";
+  }
   const summary = document.getElementById("oslo-weather");
   summary.className = "weather-summary";
   summary.setAttribute("aria-label", weather.weatherText);
@@ -138,8 +145,14 @@ function renderWeather(weather) {
   weatherAttribution.replaceChildren(forecastLine, sourceLine);
 }
 
+document.querySelector(".intro").textContent = "Requesting your location…";
 requestGeolocation()
-  .then((coords) => fetchWeather(coords ?? undefined))
+  .then((coords) => {
+    const locationDenied = coords === null;
+    return fetchWeather(coords ?? undefined).then((weather) =>
+      Object.assign(weather, { locationDenied }),
+    );
+  })
   .then(renderWeather)
   .catch((error) => {
     document.getElementById("oslo-weather").textContent =
