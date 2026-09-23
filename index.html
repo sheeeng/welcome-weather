@@ -157,6 +157,15 @@
           background: rgb(13 17 23 / 44%);
         }
       }
+      footer {
+        padding: 2rem 1rem 1rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+      footer p {
+        margin: 0.25rem 0;
+      }
       @media (max-width: 720px) {
         #oslo-weather.weather-summary {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -183,6 +192,17 @@
         <div id="oslo-forecast-periods"></div>
       </section>
     </main>
+    <footer>
+      <p>
+        Seasonal background by
+        <a href="https://threeui.com/browse" target="_blank" rel="noopener noreferrer">Three UI</a>.
+      </p>
+      <p>
+        Built from
+        <a id="commit-link" href="https://github.com/sheeeng/whether-weather/commit/dev" target="_blank" rel="noopener noreferrer">dev</a>.
+        Made with 💚 by Leonard.
+      </p>
+    </footer>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
