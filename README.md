@@ -11,7 +11,7 @@ Run `npm install` to install dependencies. Run `npm run dev` to start the local 
 - [welcome-weather.firebaseapp.com](https://welcome-weather.firebaseapp.com/)
 - [welcome-weather.web.app](https://welcome-weather.web.app/)
 - [welcome-weather.netlify.app](https://welcome-weather.netlify.app/)
-- [welcome-weather.vercel.app](https://welcome-weather.vercel.app/)
+- [welcome-weather-three.vercel.app](https://welcome-weather-three.vercel.app/)
 - [sheeeng.github.io/welcome-weather](https://sheeeng.github.io/welcome-weather/)
 
 ## Attribution
