@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" data-season="summer">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Current weather and short forecast for Oslo, Norway."
+    />
+    <link rel="icon" href="data:," />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css"
+    />
+    <title>Whether Weather</title>
+    <style>
+      :root {
+        --wash: 246 250 244;
+        --text: #1f2933;
+        --muted: #3b4652;
+        --link: #0550ae;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--text);
+        font-family: system-ui, sans-serif;
+      }
+      body::before {
+        position: fixed;
+        z-index: -1;
+        inset: 0;
+        content: "";
+        background: rgb(var(--wash) / 70%);
+      }
+      #seasonal-scene {
+        position: fixed;
+        z-index: -2;
+        inset: 0;
+        background: #4a4d44;
+      }
+      main {
+        width: min(100% - 2rem, 48rem);
+        margin: auto;
+        padding: clamp(2rem, 8vh, 6rem) 0;
+        text-align: center;
+      }
+      h1 {
+        margin: 0 0 0.25rem;
+        font-size: clamp(2rem, 6vw, 4rem);
+      }
+      .intro,
+      #oslo-weather-attribution {
+        color: var(--muted);
+      }
+      #oslo-weather-attribution {
+        display: grid;
+        gap: 0.15rem;
+        margin: 1.5rem 0 0.75rem;
+        font-size: 0.875rem;
+      }
+      a {
+        color: var(--link);
+      }
+      #oslo-weather.weather-summary {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.5rem;
+      }
+      #oslo-weather-details,
+      #oslo-forecast-periods {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.5rem;
+      }
+      .weather-summary-item,
+      .weather-reading,
+      .weather-period {
+        padding: 0.65rem;
+        border: 1px solid rgb(31 41 51 / 20%);
+        border-radius: 0.6rem;
+        background: rgb(255 255 255 / 40%);
+      }
+      .weather-summary-item,
+      .weather-reading dd,
+      .weather-period > span:not(.weather-period-precipitation) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+      }
+      .weather-reading dd {
+        margin: 0;
+        font-weight: 650;
+      }
+      .weather-summary-item .wi,
+      .weather-reading .wi,
+      .weather-period .wi {
+        flex: 0 0 auto;
+        font-size: 1.15em;
+      }
+      #oslo-weather-details {
+        margin: 0.5rem 0;
+      }
+      #oslo-forecast {
+        margin-top: 1.5rem;
+      }
+      #oslo-forecast h2 {
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .weather-period {
+        display: grid;
+        gap: 0.25rem;
+      }
+      .weather-period-precipitation {
+        color: var(--muted);
+        font-size: 0.875rem;
+      }
+      .wind-barb {
+        width: 1.5rem;
+        height: 1.5rem;
+        flex: 0 0 auto;
+        transform: rotate(var(--wind-direction));
+      }
+      .wind-barb path,
+      .wind-barb circle {
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-width: 2;
+      }
+      .wind-barb polygon {
+        fill: currentColor;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --wash: 13 17 23;
+          --text: #e6edf3;
+          --muted: #b7c2ce;
+          --link: #80bfff;
+        }
+        body::before {
+          background: rgb(var(--wash) / 72%);
+        }
+        .weather-summary-item,
+        .weather-reading,
+        .weather-period {
+          border-color: rgb(230 237 243 / 24%);
+          background: rgb(13 17 23 / 44%);
+        }
+      }
+      @media (max-width: 720px) {
+        #oslo-weather.weather-summary {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        #oslo-weather-details,
+        #oslo-forecast-periods {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="seasonal-scene" aria-hidden="true"></div>
+    <main>
+      <h1>Whether Weather</h1>
+      <p class="intro">Current conditions in Oslo.</p>
+      <p id="oslo-weather-attribution">
+        <a href="https://api.met.no/">MET Norway</a>
+      </p>
+      <p id="oslo-weather" aria-live="polite">Loading current weather.</p>
+      <dl id="oslo-weather-details"></dl>
+      <section id="oslo-forecast" hidden>
+        <h2>Forecast Periods</h2>
+        <div id="oslo-forecast-periods"></div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
