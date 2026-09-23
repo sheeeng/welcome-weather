@@ -25,7 +25,7 @@ echo "\${TEMPORARY_DIRECTORY}: ${TEMPORARY_DIRECTORY}"
 
 
 readonly GITHUB_ENVIRONMENT="firebase"
-readonly GOOGLE_CLOUD_PROJECT_ID="whether-weather"
+readonly GOOGLE_CLOUD_PROJECT_ID="whether-weather-26f21"
 readonly REPOSITORY="sheeeng/whether-weather"
 REPOSITORY_ID="$(gh api "repos/${REPOSITORY}" --jq '.id')"
 readonly REPOSITORY_ID
