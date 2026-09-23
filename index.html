@@ -36,7 +36,7 @@
         z-index: -1;
         inset: 0;
         content: "";
-        background: rgb(var(--wash) / 70%);
+        background: radial-gradient(ellipse at center, rgb(var(--wash) / 82%) 0%, rgb(var(--wash) / 60%) 55%, rgb(var(--wash) / 28%) 100%);
       }
       #seasonal-scene {
         position: fixed;
@@ -147,7 +147,7 @@
           --link: #80bfff;
         }
         body::before {
-          background: rgb(var(--wash) / 72%);
+          background: radial-gradient(ellipse at center, rgb(var(--wash) / 84%) 0%, rgb(var(--wash) / 62%) 55%, rgb(var(--wash) / 30%) 100%);
         }
         .weather-summary-item,
         .weather-reading,
@@ -162,12 +162,13 @@
         text-align: center;
         color: var(--muted);
         font-size: 0.8125rem;
+        text-shadow: 0 0 12px rgb(var(--wash) / 90%), 0 1px 3px rgb(var(--wash) / 70%);
       }
       footer p {
         margin: 0.25rem 0;
       }
       footer p:last-child {
-        margin-top: 2rem;
+        margin-top: 0.75rem;
       }
       footer a {
         text-decoration: underline;
