@@ -146,6 +146,9 @@ function renderWeather(weather) {
   const sourceLine = document.createElement("span");
   sourceLine.replaceChildren("Obtained from ", weatherLink, ".");
   weatherAttribution.replaceChildren(forecastLine, sourceLine);
+  const currentlyEl = document.getElementById("oslo-weather-currently");
+  currentlyEl.textContent = weather.currentlyText;
+  currentlyEl.hidden = false;
 }
 
 const commitSha = import.meta.env.VITE_GIT_COMMIT_SHA_8_CHAR;

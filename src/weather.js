@@ -32,7 +32,11 @@ export async function fetchWeather(coords = OSLO) {
 
   const forecast = await response.json();
   const weather = getOsloWeather(forecast);
+  const temperatureText = new Intl.NumberFormat("en", {
+    maximumFractionDigits: 1,
+  }).format(weather.temperature);
   return {
+    currentlyText: `Currently, ${temperatureText}°C, ${weather.condition} in Oslo, 🇳🇴.`,
     forecastPeriods: getOsloForecastPeriods(forecast),
     isCurrentLocation: coords !== OSLO,
     seasonId: getSeasonFromForecast(forecast),
