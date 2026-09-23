@@ -78,8 +78,11 @@ function renderWeather(weather) {
     document.querySelector(".intro").textContent =
       "Display weather conditions at your location.";
   } else if (weather.locationDenied) {
-    document.querySelector(".intro").textContent =
-      "Display weather conditions at Oslo. Location access was denied.";
+    document.querySelector(".intro").replaceChildren(
+      "Display weather conditions at Oslo.",
+      document.createElement("br"),
+      "Location access was denied.",
+    );
   } else {
     document.querySelector(".intro").textContent =
       "Display weather conditions at Oslo.";
