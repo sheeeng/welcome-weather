@@ -6,6 +6,14 @@ An Oslo current-weather and short-forecast browser application with a seasonal T
 
 Run `npm install` to install dependencies. Run `npm run dev` to start the local server. Run `npm test` to run unit tests. Run `npm run build` to create the production output.
 
+## Deployments
+
+- [whether-weather-26f21.firebaseapp.com](https://whether-weather-26f21.firebaseapp.com/)
+- [whether-weather-26f21.web.app](https://whether-weather-26f21.web.app/)
+- [whether-weather-three.netlify.app](https://whether-weather-three.netlify.app/)
+- [whether-weather.vercel.app](https://whether-weather.vercel.app/)
+- [sheeeng.github.io/whether-weather](https://sheeeng.github.io/whether-weather/)
+
 ## Attribution
 
 Weather data comes from [MET Norway][met-norway] under the
@@ -18,6 +26,14 @@ The wind barb follows the [National Weather Service convention][nws-wind-barbs].
 
 The seasonal background uses the Sylva Living World scene from
 [Three UI][three-ui].
+
+## License
+
+This work is dual licensed under the [Apache License 2.0](LICENSE-APACHE) and the [MIT License](LICENSE-MIT).
+
+You may choose either license when you use this work.
+
+`SPDX-License-Identifier: Apache-2.0 OR MIT`
 
 [met-norway]: https://api.met.no/
 [nlod]: https://data.norge.no/nlod/en/
