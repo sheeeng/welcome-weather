@@ -86,6 +86,16 @@ else
   printf 'The %s service account already exists.\n' "${SERVICE_ACCOUNT}"
 fi
 
+run_silently gcloud projects add-iam-policy-binding "${GOOGLE_CLOUD_PROJECT_ID}" \
+  --member "serviceAccount:${SERVICE_ACCOUNT}" \
+  --role "roles/firebasehosting.admin"
+printf 'Granted roles/firebasehosting.admin to %s.\n' "${SERVICE_ACCOUNT}"
+
+run_silently gcloud projects add-iam-policy-binding "${GOOGLE_CLOUD_PROJECT_ID}" \
+  --member "serviceAccount:${SERVICE_ACCOUNT}" \
+  --role "roles/firebase.viewer"
+printf 'Granted roles/firebase.viewer to %s.\n' "${SERVICE_ACCOUNT}"
+
 USER_MANAGED_KEY_NAMES="$(
   gcloud iam service-accounts keys list \
     --iam-account "${SERVICE_ACCOUNT}" \
