@@ -25,8 +25,8 @@ echo "\${TEMPORARY_DIRECTORY}: ${TEMPORARY_DIRECTORY}"
 
 
 readonly GITHUB_ENVIRONMENT="firebase"
-readonly GOOGLE_CLOUD_PROJECT_ID="chime-clock"
-readonly REPOSITORY="sheeeng/chime-clock"
+readonly GOOGLE_CLOUD_PROJECT_ID="whether-weather"
+readonly REPOSITORY="sheeeng/whether-weather"
 REPOSITORY_ID="$(gh api "repos/${REPOSITORY}" --jq '.id')"
 readonly REPOSITORY_ID
 readonly SERVICE_ACCOUNT="github-action-${REPOSITORY_ID}@${GOOGLE_CLOUD_PROJECT_ID}.iam.gserviceaccount.com"
