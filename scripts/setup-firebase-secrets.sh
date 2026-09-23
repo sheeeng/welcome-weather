@@ -61,17 +61,17 @@ run_silently gh api \
   "repos/${REPOSITORY}/environments/${GITHUB_ENVIRONMENT}"
 printf 'Created or updated the %s GitHub environment for the %s repository.\n' "${GITHUB_ENVIRONMENT}" "${REPOSITORY}"
 
-run_silently gh secret set FIREBASE_GOOGLE_CLOUD_PROJECT_ID \
+run_silently gh secret set FIREBASE_PROJECT_ID \
   --env "${GITHUB_ENVIRONMENT}" \
   --repo "${REPOSITORY}" \
   --body "${GOOGLE_CLOUD_PROJECT_ID}"
-printf 'Set the FIREBASE_GOOGLE_CLOUD_PROJECT_ID GitHub Actions secret for the %s repository.\n' "${REPOSITORY}"
+printf 'Set the FIREBASE_PROJECT_ID GitHub Actions secret for the %s repository.\n' "${REPOSITORY}"
 
-run_silently gh secret set FIREBASE_GOOGLE_CLOUD_PROJECT_ID \
+run_silently gh secret set FIREBASE_PROJECT_ID \
   --app dependabot \
   --repo "${REPOSITORY}" \
   --body "${GOOGLE_CLOUD_PROJECT_ID}"
-printf 'Set the FIREBASE_GOOGLE_CLOUD_PROJECT_ID Dependabot secret for the %s repository.\n' "${REPOSITORY}"
+printf 'Set the FIREBASE_PROJECT_ID Dependabot secret for the %s repository.\n' "${REPOSITORY}"
 
 run_silently gcloud config set project "${GOOGLE_CLOUD_PROJECT_ID}"
 printf 'Set the Google Cloud project to %s for the %s repository.\n' "${GOOGLE_CLOUD_PROJECT_ID}" "${REPOSITORY}"
